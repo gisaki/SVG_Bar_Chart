@@ -11,6 +11,8 @@ short data[] = {
     50, 10, 20, 30, 40, 100, 20, 
     50, 10, 20, 30, 40, 100, 20, 
 };
+#define THR_NUM (sizeof(thr)/sizeof(thr[0]))
+short thr[] = {10, 211, 300, 312};
 
 int GetMax()
 {
@@ -19,6 +21,11 @@ int GetMax()
     for (i=0; i<DATA_NUM; i++) {
         if (max < data[i]) {
             max = data[i];
+        }
+    }
+    for (i=0; i<THR_NUM; i++) {
+        if (max < thr[i]) {
+            max = thr[i];
         }
     }
     return max;
@@ -79,6 +86,18 @@ int main(int argc, char **argv){
                 printf("<text x='%d' y='%d'>%d</text>\n", i * GRAPH_W, max - data[i] - FONT_H / 4, data[i]);
             }
         }
+
+        for (i=0; i<THR_NUM; i++) {
+            printf("<text x='%d' y='%d'>%d</text>\n", 0, max - thr[i] + FONT_H, thr[i]);
+        }
+        printf("<g stroke='#FFC107' stroke-width='2' stroke-dasharray='4 4'>\n");
+        for (i=0; i<THR_NUM; i++) {
+            printf("<line x1='%d' y1='%d' x2='%d' y2='%d'/>\n", 
+                0, max - thr[i], DATA_NUM * GRAPH_W, max - thr[i]
+            );
+        }
+        printf("</g>\n");
+
     }
     
     printf("</g>\n");
