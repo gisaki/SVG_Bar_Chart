@@ -62,17 +62,17 @@ int main(int argc, char **argv){
     printf("<body>\n");
     
     printf("<svg width='1000' height='500' viewBox='0 0 %d %d'>\n", DATA_NUM * GRAPH_W + PAD * 2, max + PAD * 2);
-    printf("<rect width='100%%' height='100%%' fill='#fafafa' />\n");
+    printf("<rect width='100%%' height='100%%' fill='#F1F8E9' />\n");
 
     printf("<g font-size='%d' transform='translate(%d, %d)'>\n", FONT_H, PAD, PAD);
     {
         for (i=0; i<=max; i+=grid_height) {
-            printf("<line x1='%d' y1='%d' x2='%d' y2='%d' stroke='#e2e2e3' stroke-width='2'/>\n", 
+            printf("<line x1='%d' y1='%d' x2='%d' y2='%d' stroke='#E0E0E0' stroke-width='2'/>\n", 
                 0, max - i, DATA_NUM * GRAPH_W, max - i
             );
         }
 
-        printf("<path stroke='#0176c0' stroke-width='1' fill='#01a8f7' d='\n");
+        printf("<path stroke='#558B2F' stroke-width='1' fill='#AED581' d='\n");
         printf("M0,%d\n", max);
         for (i=0; i<DATA_NUM; i++) {
             printf("V%d V%d h%d\n", max, max - data[i], GRAPH_W);
@@ -90,7 +90,7 @@ int main(int argc, char **argv){
         for (i=0; i<THR_NUM; i++) {
             printf("<text x='%d' y='%d'>%d</text>\n", 0, max - thr[i] + FONT_H, thr[i]);
         }
-        printf("<g stroke='#FFC107' stroke-width='2' stroke-dasharray='4 4'>\n");
+        printf("<g stroke='#FF9800' stroke-width='2' stroke-dasharray='4 4'>\n");
         for (i=0; i<THR_NUM; i++) {
             printf("<line x1='%d' y1='%d' x2='%d' y2='%d'/>\n", 
                 0, max - thr[i], DATA_NUM * GRAPH_W, max - thr[i]
